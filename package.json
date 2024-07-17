@@ -1,0 +1,101 @@
+{
+  "name": "odinsundry",
+  "displayName": "odinsundry",
+  "description": "",
+  "version": "1.0.1",
+  "icon": "assets/avatar.png",
+  "engines": {
+    "vscode": "^1.47.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/odinGitGmail/odinGG-Sundry.git"
+  },
+  "publisher": "odinsam",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/odinGitGmail/odinGG-Sundry/issues"
+  },
+  "homepage": "https://github.com/odinGitGmail/odinGG-Sundry#readme",
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./extension.js",
+  "contributes": {
+    "keybindings": [
+      {
+        "command": "odin-sundry.generateGuidToUpper",
+        "key": "ctrl+shift+g ctrl+shift+u",
+        "mac": "cmd+shift+g cmd+shift+u"
+	    },
+      {
+        "command": "odin-sundry.generateGuidToLower",
+        "key": "ctrl+shift+g ctrl+shift+l",
+        "mac": "cmd+shift+g cmd+shift+l"
+      }
+    ],
+    "commands": [
+      {
+        "command": "odin-sundry.generateGuidToUpper",
+        "title": "大写"
+      },
+      {
+        "command": "odin-sundry.generateGuidToLower",
+        "title": "小写"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "group": "z_command@1",
+          "submenu": "Sundry"
+        }
+      ],
+      "Sundry":[
+        {
+          "submenu": "GenerateGuid"
+        }
+      ],
+      "GenerateGuid":[
+        {
+          "command": "odin-sundry.generateGuidToUpper",
+          "group": "sundry_generateGuid@1"
+        },
+        {
+          "command": "odin-sundry.generateGuidToLower",
+          "group": "sundry_generateGuid@2"
+        }
+      ]
+    },
+    "submenus": [
+      {
+        "id": "Sundry",
+        "label": "小工具"
+      },
+      {
+        "id": "GenerateGuid",
+        "label": "生成Guid"
+      }
+    ]
+  },
+  "scripts": {
+    "release": "standard-version",
+    "changelog": "conventional-changelog -i CHANGELOG.md -s -r 0",
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "vscode-test",
+    "build": "vsce package"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.47.0",
+    "@types/mocha": "^10.0.7",
+    "@types/node": "20.x",
+    "eslint": "^8.57.0",
+    "typescript": "^5.4.5",
+    "@vscode/test-cli": "^0.0.9",
+    "@vscode/test-electron": "^2.4.0"
+  }
+}
