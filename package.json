@@ -2,7 +2,7 @@
   "name": "odingg-sundry",
   "displayName": "odingg-sundry",
   "description": "",
-  "version": "1.1.0",
+  "version": "1.0.2",
   "icon": "assets/avatar.png",
   "engines": {
     "vscode": "^1.91.0"
