@@ -32,37 +32,49 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(vscode.commands.registerTextEditorCommand('odin-sundry.generatePackageJson-AuthorVersionGitInfo', (textEditor, edit) => {
 		let author: string | undefined = '';
 		let gitRepositoryName: string | undefined = "";
-		let gitType: string | undefined = 'git';
-		// 输入作者名称
-		const authorBox = vscode.window.showInputBox({
+		let icon: string | undefined = '';
+		// 输入 icon
+		vscode.window.showInputBox({
 			// 这个对象中所有参数都是可选参数
 			password: false, // 输入内容是否是密码
 			ignoreFocusOut: true, // 默认false，设置为true时鼠标点击别的地方输入框不会消失
-			placeHolder: '作者', // 在输入框内的提示信息 
-			value: 'odinGitGmail'
-		}).then(authorBoxValue => {
-			if (authorBoxValue !== '') {
-				author = authorBoxValue;
+			placeHolder: '输入 icon 路径', // 在输入框内的提示信息 
+			value: '/assets/avatar.png'
+		}).then(iconValue => {
+			if (iconValue !== '') {
+				icon = iconValue;
 			}
-			// 输入Git仓库名称
-			vscode.window.showInputBox({
+			// 输入作者名称
+			const authorBox = vscode.window.showInputBox({
 				// 这个对象中所有参数都是可选参数
 				password: false, // 输入内容是否是密码
 				ignoreFocusOut: true, // 默认false，设置为true时鼠标点击别的地方输入框不会消失
-				placeHolder: 'Git仓库名称', // 在输入框内的提示信息 
-			}).then(gitRepositoryValue => {
-				if (gitRepositoryValue !== '') {
-					gitRepositoryName = gitRepositoryValue;
-					var pvavInfo = packageAuthorVersion(author!, gitRepositoryName!);
-					textEditor.edit(edit => {
-						const position = textEditor.selection.active;
-						edit.insert(position, pvavInfo);
-					});
+				placeHolder: '作者', // 在输入框内的提示信息 
+				value: 'odinGitGmail'
+			}).then(authorBoxValue => {
+				if (authorBoxValue !== '') {
+					author = authorBoxValue;
 				}
-				else {
-					vscode.window.showErrorMessage("必须输入Git仓库的url网址");
-					return;
-				}
+				// 输入Git仓库名称
+				vscode.window.showInputBox({
+					// 这个对象中所有参数都是可选参数
+					password: false, // 输入内容是否是密码
+					ignoreFocusOut: true, // 默认false，设置为true时鼠标点击别的地方输入框不会消失
+					placeHolder: 'Git仓库名称', // 在输入框内的提示信息 
+				}).then(gitRepositoryValue => {
+					if (gitRepositoryValue !== '') {
+						gitRepositoryName = gitRepositoryValue;
+						var pvavInfo = packageAuthorVersion(author!, gitRepositoryName!);
+						textEditor.edit(edit => {
+							const position = textEditor.selection.active;
+							edit.insert(position, pvavInfo);
+						});
+					}
+					else {
+						vscode.window.showErrorMessage("必须输入Git仓库的url网址");
+						return;
+					}
+				});
 			});
 		});
 	}));

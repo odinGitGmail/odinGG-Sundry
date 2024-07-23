@@ -6,6 +6,7 @@
   "engines": {
     "vscode": "^1.91.0"
   },
+  "icon": "/assets/avatar.png",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/odinGitGmail/odinGG-Sundry.git"

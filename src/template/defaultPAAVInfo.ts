@@ -1,4 +1,5 @@
-const packageAuthorVersionTemplate: string = `"repository": {
+const packageAuthorVersionTemplate: string = `"icon": "/assets/avatar.png",
+  "repository": {
     "type": "git",
     "url": "git+https://github.com/$author$/$gitRepositoryName$.git"
   },
@@ -12,7 +13,7 @@ const packageAuthorVersionTemplate: string = `"repository": {
   "homepage": "https://github.com/$author$/$gitRepositoryName$#readme",`;
 
 const packageAuthorVersion = (author: string, gitRepositoryName: string): string => {
-    return packageAuthorVersionTemplate.replaceAll("$author$", author).replaceAll("$gitRepositoryName$", gitRepositoryName);
+  return packageAuthorVersionTemplate.replaceAll("$author$", author).replaceAll("$gitRepositoryName$", gitRepositoryName);
 };
 
 export default packageAuthorVersion;
