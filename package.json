@@ -2,7 +2,7 @@
   "name": "odinsundry",
   "displayName": "odinsundry",
   "description": "odinsundry",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "engines": {
     "vscode": "^1.91.0"
   },
@@ -57,6 +57,10 @@
       {
         "command": "odin-sundry.generateLICENSE",
         "title": "生成 LICENSE 文件"
+      },
+      {
+        "command": "odin-sundry.generateChangeLogCommand",
+        "title": "添加 changeLog 命令"
       }
     ],
     "menus": {
@@ -91,6 +95,11 @@
           "group": "SundryEditorContext@2",
           "command": "odin-sundry.generatePackageJson-AuthorVersionGitInfo",
           "when": "resourceLangId == json"
+        },
+        {
+          "group": "SundryEditorContext@3",
+          "command": "odin-sundry.generateChangeLogCommand",
+          "when": "resourceLangId == json"
         }
       ],
       "GenerateGuid": [
@@ -120,6 +129,7 @@
     ]
   },
   "scripts": {
+    "genChangeLog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",

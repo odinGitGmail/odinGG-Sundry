@@ -78,6 +78,16 @@ export function activate(context: vscode.ExtensionContext) {
 			});
 		});
 	}));
+
+	// 添加 changeLog 命令
+	context.subscriptions.push(vscode.commands.registerTextEditorCommand('odin-sundry.generateChangeLogCommand', (textEditor, edit) => {
+		const position = textEditor.selection.active;
+		const changeLogCommand = `"genChangeLog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"`;
+		edit.insert(position, changeLogCommand);
+		let outputChannel = vscode.window.createOutputChannel(`Sundry`);
+		outputChannel.show(true);
+		outputChannel.append('请确保安装了conventional-changelog, 使用命令 npm install -g conventional-changelog-cli');
+	}));
 }
 
 export function deactivate() { }
