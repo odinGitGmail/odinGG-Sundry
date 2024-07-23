@@ -1,8 +1,8 @@
 {
-  "name": "test4",
-  "displayName": "test4",
-  "description": "test4",
-  "version": "0.0.1",
+  "name": "odinsundry",
+  "displayName": "odinsundry",
+  "description": "odinsundry",
+  "version": "1.0.3",
   "engines": {
     "vscode": "^1.91.0"
   },
