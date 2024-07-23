@@ -1,4 +1,4 @@
-const packageAuthorVersionTemplate: string = `"icon": "/assets/avatar.png",
+const packageAuthorVersionTemplate: string = `"icon": "assets/avatar.png",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/$author$/$gitRepositoryName$.git"
