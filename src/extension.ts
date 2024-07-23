@@ -45,7 +45,7 @@ export function activate(context: vscode.ExtensionContext) {
 				icon = iconValue;
 			}
 			// 输入作者名称
-			const authorBox = vscode.window.showInputBox({
+			vscode.window.showInputBox({
 				// 这个对象中所有参数都是可选参数
 				password: false, // 输入内容是否是密码
 				ignoreFocusOut: true, // 默认false，设置为true时鼠标点击别的地方输入框不会消失
